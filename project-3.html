@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fetch posts example</h1>
+    <p>click the button below to load posts</p>
+    <div id="posts">data will load here...</div>
+    <button id="loadMoreBtn"  aria-label="Load more posts">Load more posts</button>
+    <script>
+        let postStart=0;
+        document.getElementById("loadMoreBtn").addEventListener("click",function(){
+            loadposts();
+        });
+function loadposts(){
+   
+    const url= ("https://jsonplaceholder.typicode.com/posts")
+    fetch(url)
+.then(response =>{})
+.then(data=>{
+    const postsContainer = document.getElementById("posts")
+    data.foEach(post =>{
+        const postElement =document.createElement("div");
+        postElement.innerHTML =`
+        <div class="post-title">post #${post.title}</div>
+        <p>${post.body}</p>
+        `;
+        postsContainer.appendChild(postElement);
+    });
+    poststar +=10;
+})
+.catch(error =>{
+    console.error("Error fetching user:",error);
+    document.getElementById("post").innerHTML='<strong>Error loading posts.</strong>'
+});
+    
+}
+       
+    
+
+
+
+        
+
+    </script>
+    
+
+    
+    
+    
+</body>
+</html>
